@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+}
+
+body {
+  background: #f6f8ff;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 38px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}

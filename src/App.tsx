@@ -39,10 +39,25 @@ function App() {
     }
   };
 
-  const date = new Date(searchedUser.created_at);
+  const date = new Date(searchedUser?.created_at);
 
-  const options = { day: "numeric", month: "short", year: "numeric" };
-  const formattedDate = date.toLocaleDateString("en-US", options);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const monthName = monthNames[date.getMonth()];
 
   return (
     <div className="content">
@@ -72,7 +87,9 @@ function App() {
             <div className="user-propertys">
               <div className="user-header">
                 <h1>{searchedUser?.name}</h1>
-                <p>Joined {formattedDate}</p>
+                <p>
+                  Joined {day} {monthName} {year}
+                </p>
               </div>
               <a className="link" href="#">
                 @{searchedUser?.login}

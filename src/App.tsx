@@ -30,9 +30,11 @@ function App() {
       );
       if (!response.ok) {
         setSearchError("No results");
+        setTimeout(() => {
+          setSearchError(null);
+        }, 3000);
       }
       const data = await response.json();
-      setSearchError(null);
       setSearchedUser(data);
     } catch (err) {
       console.error(err);
@@ -78,7 +80,7 @@ function App() {
               onChange={(e) => setSearchValue(e.target.value)}
             />
             <button>Search</button>
-            {/* <p>error: {searchError}</p> */}
+            <span>{searchError}</span>
           </form>
         </div>
         {searchedUser ? (

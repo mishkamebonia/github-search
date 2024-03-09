@@ -30,10 +30,12 @@ function App() {
       );
       if (!response.ok) {
         setSearchError("No results");
+
         setTimeout(() => {
           setSearchError(null);
         }, 3000);
       }
+
       const data = await response.json();
       setSearchedUser(data);
     } catch (err) {
@@ -83,7 +85,7 @@ function App() {
             <span>{searchError}</span>
           </form>
         </div>
-        {searchedUser ? (
+        {searchedUser?.login ? (
           <div className="search-result">
             <img src={searchedUser?.avatar_url} alt="avatar" />
             <div className="user-propertys">

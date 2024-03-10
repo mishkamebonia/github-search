@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./App.module.scss";
 import Search from "./components/Search/Search";
 import Header from "./components/Header/Header";
 import Result from "./components/Result/Result";
+import { useTheme } from "./providers/theme";
 
 export type User = {
   avatar_url: string;
@@ -21,6 +22,7 @@ export type User = {
 };
 
 function App() {
+  const { theme } = useTheme();
   const [searchValue, setSearchValue] = useState<string>("");
   const [searchedUser, setSearchedUser] = useState<User | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
@@ -46,6 +48,10 @@ function App() {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    document.body.classList.toggle("darkTheme", theme === "dark");
+  }, [theme]);
 
   return (
     <div className={styles.content}>

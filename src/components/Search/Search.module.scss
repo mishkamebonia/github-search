@@ -4,7 +4,8 @@
   margin-bottom: 24px;
   box-shadow: 0px 16px 30px -10px $shadowColor;
   border-radius: 15px;
-  background: $whiteColor;
+  background: var(--content-color);
+  color: var(--text-color);
 
   form {
     position: relative;
@@ -18,9 +19,11 @@
     font-size: 18px;
     line-height: 25px;
     caret-color: $blueColor;
+    color: var(--bold-color);
+    background: var(--content-color);
 
     &::placeholder {
-      color: $queenBlueColor;
+      color: var(--text-color);
     }
   }
 

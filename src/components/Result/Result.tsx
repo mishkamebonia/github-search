@@ -29,20 +29,24 @@ const Result = ({ searchedUser }: Props) => {
 
   return (
     <div className={styles.result}>
-      <img src={searchedUser?.avatar_url} alt="avatar" />
-      <div className={styles.propertys}>
-        <div className={styles.header}>
-          <h1>{searchedUser?.name}</h1>
-          <p>
-            Joined {day} {monthName} {year}
+      <div className={styles.headerRow}>
+        <img src={searchedUser?.avatar_url} alt="avatar" />
+        <div className={styles.col}>
+          <div className={styles.header}>
+            <h1>{searchedUser?.name}</h1>
+            <p>
+              Joined {day} {monthName} {year}
+            </p>
+          </div>
+          <a className={styles.link} href={searchedUser.html_url}>
+            @{searchedUser?.login}
+          </a>
+          <p className={styles.about}>
+            {searchedUser.bio ? searchedUser.bio : "This profile has no bio"}
           </p>
         </div>
-        <a className={styles.link} href={searchedUser.html_url}>
-          @{searchedUser?.login}
-        </a>
-        <p className={styles.about}>
-          {searchedUser.bio ? searchedUser.bio : "This profile has no bio"}
-        </p>
+      </div>
+      <div className={styles.propertys}>
         <div className={styles.info}>
           <div>
             <h4>Repos</h4>

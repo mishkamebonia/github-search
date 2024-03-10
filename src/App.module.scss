@@ -12,3 +12,20 @@
 .card {
   width: 730px;
 }
+
+@media only screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .card {
+    padding: 0 70px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .card {
+    padding: 0 24px;
+  }
+}

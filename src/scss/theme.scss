@@ -1,0 +1,25 @@
+@import "./colors.scss";
+
+:root {
+  --background-color: #{$ghostWhiteColor};
+  --text-color: #{$queenBlueColor};
+  --content-color: #{$whiteColor};
+  --faded-color: #{$slateGrayColor};
+  --bold-color: #{$gunMetalColor};
+  --link-color: #{$darkGunMetalColor};
+  --hover-color: #{$slateGrayColor};
+}
+
+.darkTheme {
+  --background-color: #{$darkGunMetalColor};
+  --text-color: #{$whiteColor};
+  --content-color: #{$yankeesBlueColor};
+  --faded-color: #{$whiteColor};
+  --bold-color: #{$whiteColor};
+  --link-color: #{$whiteColor};
+  --hover-color: #{$queenBlueColor};
+}
+
+body {
+  background: var(--background-color);
+}

@@ -1,7 +1,10 @@
 import { useState } from "react";
-import "./App.scss";
+import styles from "./App.module.scss";
+import Search from "./components/Search/Search";
+import Header from "./components/Header/Header";
+import Result from "./components/Result/Result";
 
-interface User {
+export type User = {
   avatar_url: string;
   name: string;
   created_at: string;
@@ -14,7 +17,8 @@ interface User {
   blog: string;
   twitter_username: string;
   company: string;
-}
+  html_url: string;
+};
 
 function App() {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -43,107 +47,17 @@ function App() {
     }
   };
 
-  const date = new Date(searchedUser?.created_at);
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const day = date.getDate();
-  const year = date.getFullYear();
-  const monthName = monthNames[date.getMonth()];
-
   return (
-    <div className="content">
-      <div className="card">
-        <div className="card-header">
-          <h1>devfinder</h1>
-          <button>
-            DARK <i className="fa-solid fa-moon"></i>
-          </button>
-        </div>
-        <div className="search-form">
-          <form onSubmit={handleSearch}>
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="search"
-              placeholder="Search GitHub username…"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-            <button>Search</button>
-            <span>{searchError}</span>
-          </form>
-        </div>
-        {searchedUser?.login ? (
-          <div className="search-result">
-            <img src={searchedUser?.avatar_url} alt="avatar" />
-            <div className="user-propertys">
-              <div className="user-header">
-                <h1>{searchedUser?.name}</h1>
-                <p>
-                  Joined {day} {monthName} {year}
-                </p>
-              </div>
-              <a className="link" href="#">
-                @{searchedUser?.login}
-              </a>
-              <p className="about">
-                {searchedUser.bio
-                  ? searchedUser.bio
-                  : "This profile has no bio"}
-              </p>
-              <div className="info-row">
-                <div>
-                  <h4>Repos</h4>
-                  <h2>{searchedUser?.public_repos}</h2>
-                </div>
-                <div>
-                  <h4>Followers</h4>
-                  <h2>{searchedUser?.followers}</h2>
-                </div>
-                <div>
-                  <h4>Following</h4>
-                  <h2>{searchedUser?.following}</h2>
-                </div>
-              </div>
-              <div className="social-links">
-                <p>
-                  <i className="fa-solid fa-location-dot"></i>{" "}
-                  {searchedUser.location
-                    ? searchedUser.location
-                    : "Not Available"}
-                </p>
-                <p>
-                  <i className="fa-brands fa-twitter"></i>{" "}
-                  {searchedUser.twitter_username
-                    ? searchedUser.twitter_username
-                    : "Not Available"}
-                </p>
-                <a href={searchedUser?.blog}>
-                  <i className="fa-solid fa-link"></i>{" "}
-                  {searchedUser.blog ? searchedUser.blog : "Not Available"}
-                </a>
-                <p>
-                  <i className="fa-solid fa-building-user"></i>{" "}
-                  {searchedUser.company
-                    ? searchedUser.company
-                    : "Not Available"}
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : null}
+    <div className={styles.content}>
+      <div className={styles.card}>
+        <Header />
+        <Search
+          handleSearch={handleSearch}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          searchError={searchError}
+        />
+        {searchedUser?.login ? <Result searchedUser={searchedUser} /> : null}
       </div>
     </div>
   );

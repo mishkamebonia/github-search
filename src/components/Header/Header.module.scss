@@ -1,0 +1,26 @@
+@import "../../scss/colors.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 36px;
+
+  i {
+    font-size: 15px;
+  }
+
+  button {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 19.25px;
+    color: $slateGrayColor;
+    background: transparent;
+    transition: $transition;
+
+    &:hover {
+      color: $darkGunMetalColor;
+    }
+  }
+}
